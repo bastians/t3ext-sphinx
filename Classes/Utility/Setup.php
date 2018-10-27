@@ -1258,7 +1258,9 @@ EOT;
         foreach ($tags as $tag) {
             $key = $tag['name'];
             $name = $key;
-            $url = $tag['zipball_url'];
+            // $tag['zipball_url'] is not usable right away since it contains a redirect
+            // so we just manually craft it!
+            $url = 'https://codeload.github.com/sphinx-doc/sphinx/zip/' . $key;
 
             // Make sure main release (e.g., "1.2") gets a ".0" patch release version as well
             if (preg_match('/^\d+\.\d+$/', $name)) {
